@@ -10,7 +10,7 @@ To learn more, just access the [:BetterVim documentation](https://bettervim.com/
 
 ## Cloning / Forking
 
-Please review the [license](https://github.com/samuelematias/samuelematias.com/blob/main/LICENSE.txt) and remove all of my personal information (docs, images, etc.).
+Please review the [license](https://github.com/samuelematias/better-vim-config/blob/main/LICENSE.txt) and remove all of my personal information (docs, images, etc.).
 
 ## Author
 
