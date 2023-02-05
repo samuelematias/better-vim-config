@@ -73,6 +73,11 @@ return {
 				"<cmd>botright new<cr>",
 				"New empty buffer"
 			},
+			-- Remap NvimTreeToggle
+			["<leader>op"] = {
+				"<cmd>NvimTreeToggle<cr>",
+				"Open file explorer"
+			},
 		}
 	}
 }
