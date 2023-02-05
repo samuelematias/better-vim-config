@@ -25,13 +25,13 @@ Plug 'rcarriga/nvim-dap-ui'
 
 "END - Dart/Flutter Config
 
-"Magit for Neovim 
+"Magit for Neovim
 Plug 'TimUntersberger/neogit'
 
 "Easily manage multiple terminal windows, inside Neovim
 Plug 'akinsho/toggleterm.nvim', {'tag' : '*'}
 
-"Neovim plugin for GitHub Copilot 
+"Neovim plugin for GitHub Copilot
 Plug 'github/copilot.vim'
 
 "Git Blame plugin for Neovim
@@ -39,3 +39,10 @@ Plug 'f-person/git-blame.nvim'
 
 "Delete Neovim buffers without losing window layout
 Plug 'famiu/bufdelete.nvim'
+
+"Markdown preview plugin for (neo)vim
+" If you have nodejs and yarn.
+" After install, open the readme and execute this command bellow:
+" :call mkdp#util#install()
+" https://github.com/iamcco/markdown-preview.nvim/issues/509#issuecomment-1272483338
+Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install' }
