@@ -42,4 +42,14 @@ lua << EOF
   dap.listeners.before.event_exited["dapui_config"] = function()
     dapui.close()
   end
+
+  require("chafa").setup({
+    render = {
+      min_padding = 5,
+      show_label = true,
+    },
+    events = {
+      update_on_nvim_resize = true,
+    },
+  })
 EOF

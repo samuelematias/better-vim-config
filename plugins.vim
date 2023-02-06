@@ -46,3 +46,9 @@ Plug 'famiu/bufdelete.nvim'
 " :call mkdp#util#install()
 " https://github.com/iamcco/markdown-preview.nvim/issues/509#issuecomment-1272483338
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install' }
+
+"A neovim plugin for viewing images.
+" Before install this plugin, don't forget to install chafa:
+" brew install chafa
+Plug 'm00qek/baleia.nvim'
+Plug 'princejoogie/chafa.nvim'
