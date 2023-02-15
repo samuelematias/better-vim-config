@@ -11,7 +11,7 @@ Plug 'akinsho/flutter-tools.nvim'
 Plug 'dart-lang/dart-vim-plugin'
 
 Plug 'natebosch/vim-lsc'
-"Plug 'natebosch/vim-lsc-dart'
+Plug 'natebosch/vim-lsc-dart'
 
 "Debugger stuffs
 Plug 'mfussenegger/nvim-dap'
@@ -52,3 +52,11 @@ Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install' }
 " brew install chafa
 Plug 'm00qek/baleia.nvim'
 Plug 'princejoogie/chafa.nvim'
+
+"A pretty diagnostics,
+"w/ location list to help you solve all the trouble your code is causing.
+Plug 'nvim-tree/nvim-web-devicons'
+Plug 'folke/trouble.nvim'
+
+"Highlight, list and search todo comments in your projects
+Plug 'folke/todo-comments.nvim'

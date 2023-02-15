@@ -53,3 +53,6 @@ lua << EOF
     },
   })
 EOF
+
+"   Disable autocomplete, from vim-lsc
+let g:lsc_enable_autocomplete = v:false
