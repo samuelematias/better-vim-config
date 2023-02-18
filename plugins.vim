@@ -28,6 +28,14 @@ Plug 'rcarriga/nvim-dap-ui'
 "Magit for Neovim
 Plug 'TimUntersberger/neogit'
 
+"Super fast git decorations
+Plug 'lewis6991/gitsigns.nvim'
+
+"Single tabpage interface for easily cycling 
+"through diffs for all modified files for any git rev
+"and can be used as a merge tool too
+Plug 'sindrets/diffview.nvim'
+
 "Easily manage multiple terminal windows, inside Neovim
 Plug 'akinsho/toggleterm.nvim', {'tag' : '*'}
 

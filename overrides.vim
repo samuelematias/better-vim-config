@@ -52,6 +52,8 @@ lua << EOF
       update_on_nvim_resize = true,
     },
   })
+
+  require('gitsigns').setup()
 EOF
 
 "   Disable autocomplete, from vim-lsc
