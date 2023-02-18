@@ -17,35 +17,51 @@ return {
 				"<cmd>Telescope flutter commands<cr>",
 				"[Flutter] Open commands by Telescope"
 			},
+			["<leader>flrd"] = {
+				"<cmd>FlutterRun --flavor development -t lib/main_development.dart<cr>",
+				"[Flutter] Debug Flavor Development"
+			},
+			["<leader>flrs"] = {
+				"<cmd>FlutterRun --flavor staging -t lib/main_staging.dart<cr>",
+				"[Flutter] Debug Flavor Staging"
+			},
+			["<leader>flrp"] = {
+				"<cmd>FlutterRun --flavor production -t lib/main_production.dart<cr>",
+				"[Flutter] Debug Flavor Production"
+			},
+			["<leader>flrn"] = {
+				"<cmd>FlutterRun --no-sound-null-safety<cr>",
+				"[Flutter] No Sound Null Safety"
+			},
 			-- Neogit
 			["<leader>gg"] = {
 				"<cmd>Neogit<cr>",
-				"Open Neogit"
+				"[Neogit] Open"
 			},
 			-- Dap Debug
-			["<leader>dbi"] = {
+			["<leader>ddi"] = {
 				"<cmd>DapContinue<cr>",
-				"Init Dap Debug"
+				"[Dap Debug] Init"
 			},
-			["<leader>dbc"] = {
+			["<leader>ddc"] = {
 				"<cmd>DapContinue<cr>",
-				"Continue Dap Debug"
+				"[Dap Debug] Continue"
 			},
-			["<leader>dbb"] = {
+			["<leader>ddb"] = {
 				"<cmd>DapToggleBreakpoint<cr>",
-				"Toggle Breakpoint Dap Debug"
+				"[Dap Debug] Toggle Breakpoint"
 			},
-			["<leader>dbn"] = {
+			["<leader>ddn"] = {
 				"<cmd>DapStepOver<cr>",
-				"Next Dap Debug"
+				"[Dap Debug] Next"
 			},
-			["<leader>dbp"] = {
+			["<leader>ddp"] = {
 				"<cmd>DapStepInto<cr>",
-				"Previous Dap Debug"
+				"[Dap Debug] Previous"
 			},
-			["<leader>dbs"] = {
+			["<leader>dds"] = {
 				"<cmd>DapTerminate<cr>",
-				"Stop Dap Debug"
+				"[Dap Debug] Stop"
 			},
 			-- WhichKey
 			["<leader>w"] = {
@@ -77,6 +93,16 @@ return {
 			["<leader>op"] = {
 				"<cmd>NvimTreeToggle<cr>",
 				"Open file explorer"
+			},
+			-- Trouble diagnostics
+			["<leader>dt"] = {
+				"<cmd>TroubleToggle<cr>",
+				"[Trouble] Show diagnostics list"
+			},
+			-- To-do list
+			["<leader>tl"] = {
+				"<cmd>TodoTelescope<cr>",
+				"[TODO] Show list"
 			},
 		}
 	}
