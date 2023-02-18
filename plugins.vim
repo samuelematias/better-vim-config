@@ -25,6 +25,8 @@ Plug 'rcarriga/nvim-dap-ui'
 
 "END - Dart/Flutter Config
 
+"START - Git Config
+
 "Magit for Neovim
 Plug 'TimUntersberger/neogit'
 
@@ -35,6 +37,8 @@ Plug 'lewis6991/gitsigns.nvim'
 "through diffs for all modified files for any git rev
 "and can be used as a merge tool too
 Plug 'sindrets/diffview.nvim'
+
+"END - Git Config
 
 "Easily manage multiple terminal windows, inside Neovim
 Plug 'akinsho/toggleterm.nvim', {'tag' : '*'}
