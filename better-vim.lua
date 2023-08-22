@@ -348,6 +348,32 @@ return {
 				"<cmd>ToggleTerm<cr>",
 				"[ToggleTerm] Open"
 			},
+			-- * Work: Swap Flutter Flavors
+			["<leader>flwsd"] = {
+				"<cmd>FlutterRun  --flavor dev -t lib/main_dev.dart<cr>",
+				"[Work] [SWAP] [Flutter] Debug Dev"
+			},
+			["<leader>flwsq"] = {
+				"<cmd>FlutterRun  --flavor qa -t lib/main_qa.dart<cr>",
+				"[Work] [SWAP] [Flutter] Debug QA"
+			},
+			["<leader>flwss"] = {
+				"<cmd>FlutterRun  --flavor stg -t lib/main_stg.dart<cr>",
+				"[Work] [SWAP] [Flutter] Debug STG"
+			},
+			["<leader>flwsp"] = {
+				"<cmd>FlutterRun  --flavor prod<cr>",
+				"[Work] [SWAP] [Flutter] Debug PROD"
+			},
+			-- * General commands
+			["<leader>qK"] = {
+				"<cmd>wqa<cr>",
+				"Quit, Save buffers and Exit Neovim "
+			},
+			["<leader>qQ"] = {
+				"<cmd>qa!<cr>",
+				"Quit without Save buffers and Exit Neovim"
+			},
 		}
 	}
 }
