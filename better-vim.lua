@@ -80,19 +80,20 @@ return {
 			},
 			config = function()
 				require("dapui").setup {
-					icons = { expanded = "▾", collapsed = "▸", current_frame = "▸" },
-					controls = {
-						icons = {
-							pause = "",
-							play = "",
-							step_into = "",
-							step_over = "",
-							step_out = "",
-							step_back = "",
-							run_last = "↻",
-							terminate = "✖",
-						}
-					}
+					icons = {
+						expanded = "▶️",
+						collapsed = "◼️",
+						circular = "⏸️",
+						breakpoint = "⏭️",
+						pointer = "⏯️",
+						target = "⏮️",
+						detach = "⏩",
+						disconnected = "⏪",
+						value = "🔍", -- Use any icon you prefer for value inspection
+						error = "❌", -- Use any icon you prefer for errors
+						pending = "⌛", -- Use any icon you prefer for pending actions
+						eval = "⚙️", -- Use any icon you prefer for evaluations
+					},
 				}
 				require("dap").listeners.after.event_initialized["dapui_config"] = function()
 					require("dapui").open()
