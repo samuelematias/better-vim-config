@@ -2,6 +2,11 @@
 
 > My [:BetterVim][bettervim] Config Files.
 
+<p align="center">
+  <img src="docs/assets/images/better-vim-banner.png" alt="show_case">
+  <br/>
+</p>
+
 ## What is BetterVim?
 
 [:BetterVim][bettervim] is a Neovim configuration script featuring lots of slick defaults and an outstanding UI.
