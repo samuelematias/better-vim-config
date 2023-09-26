@@ -18,13 +18,13 @@ return {
 				{
 					"dart-lang/dart-vim-plugin",
 					init = function()
-					  vim.g.dart_style_guide = 2
-					  vim.g.dart_format_on_save = 1
-					  vim.g.dart_html_in_string = true
-					  vim.g.dart_trailing_comma_indent = true
-					  vim.g.dartfmt_options = { "--fix" }
+						vim.g.dart_style_guide = 2
+						vim.g.dart_format_on_save = 1
+						vim.g.dart_html_in_string = true
+						vim.g.dart_trailing_comma_indent = true
+						vim.g.dartfmt_options = { "--fix" }
 					end,
-				  },
+				},
 			},
 			config = function()
 				require("flutter-tools").setup {
@@ -34,11 +34,38 @@ return {
 					},
 					debugger = { -- integrate with nvim dap + install dart code debugger
 						enabled = true,
-						run_via_dap = false, -- use dap instead of a plenary job to run flutter apps
+						run_via_dap = true, -- use dap instead of a plenary job to run flutter apps
 						-- if empty dap will not stop on any exceptions, otherwise it will stop on those specified
 						-- see |:help dap.set_exception_breakpoints()| for more info
-						exception_breakpoints = {}
-					}
+						exception_breakpoints = {},
+						-- register_configurations = function(_)
+						-- 	require("dap").configurations.dart = {}
+						-- 	require("dap.ext.vscode").load_launchjs()
+						--   end,
+
+						-- register_configurations = function(paths)
+						-- 	require("dap").configurations.dart = {
+						-- 		-- <put here config that you would find in .vscode/launch.json>
+						-- 		{
+						-- 			name = "Launch flutter app",
+						-- 			request = "launch",
+						-- 			type = "dart",
+						-- 			program = paths.workspace .. "/lib/main_qa.dart",
+						-- 			cwd = vim.fn.getcwd(),
+						-- 			args = {
+						-- 				"--flavor",
+						-- 				"qa",
+						-- 				"--target",
+						-- 				"lib/main_qa.dart",
+						-- 			},
+						-- 		},
+						-- 	}
+						-- end,
+					},
+					-- Since there is an overlap between this plugin's log buffer and the repl buffer when running via dap
+					dev_log = {
+						enabled = false,
+					},
 				}
 			end,
 		},
@@ -53,19 +80,20 @@ return {
 			},
 			config = function()
 				require("dapui").setup {
-					icons = { expanded = "▾", collapsed = "▸", current_frame = "▸" },
-					controls = {
-						icons = {
-							pause = "",
-							play = "",
-							step_into = "",
-							step_over = "",
-							step_out = "",
-							step_back = "",
-							run_last = "↻",
-							terminate = "✖",
-						}
-					}
+					icons = {
+						expanded = "▶️",
+						collapsed = "◼️",
+						circular = "⏸️",
+						breakpoint = "⏭️",
+						pointer = "⏯️",
+						target = "⏮️",
+						detach = "⏩",
+						disconnected = "⏪",
+						value = "🔍", -- Use any icon you prefer for value inspection
+						error = "❌", -- Use any icon you prefer for errors
+						pending = "⌛", -- Use any icon you prefer for pending actions
+						eval = "⚙️", -- Use any icon you prefer for evaluations
+					},
 				}
 				require("dap").listeners.after.event_initialized["dapui_config"] = function()
 					require("dapui").open()
@@ -107,7 +135,40 @@ return {
 		{
 			"akinsho/toggleterm.nvim",
 			version = "*",
-			config = true,
+			config = function()
+				require("toggleterm").setup {
+					-- size can be a number or function which is passed the current terminal
+					size = function(term)
+						if term.direction == "horizontal" then
+							return 15
+						elseif term.direction == "vertical" then
+							return vim.o.columns * 0.4
+						end
+					end,
+					open_mapping = [[<c-\>]],
+					hide_numbers = true, -- hide the number column in toggleterm buffers
+					shade_filetypes = {},
+					shade_terminals = true,
+					shading_factor = 1, -- the degree by which to darken to terminal colour, default: 1 for dark backgrounds, 3 for light
+					start_in_insert = true,
+					insert_mappings = true, -- whether or not the open mapping applies in insert mode
+					persist_size = true,
+					direction = "horizontal",
+				}
+				function _G.set_terminal_keymaps()
+					local opts = { buffer = 0 }
+					vim.keymap.set('t', '<esc>', [[<C-\><C-n>]], opts) -- remap the terminal-mode, exit from insert mode, from "CTRL-\ CTRL-N" to "ESC".
+					vim.keymap.set('t', 'jk', [[<C-\><C-n>]], opts)
+					vim.keymap.set('t', '<C-h>', [[<Cmd>wincmd h<CR>]], opts)
+					vim.keymap.set('t', '<C-j>', [[<Cmd>wincmd j<CR>]], opts)
+					vim.keymap.set('t', '<C-k>', [[<Cmd>wincmd k<CR>]], opts)
+					vim.keymap.set('t', '<C-l>', [[<Cmd>wincmd l<CR>]], opts)
+					vim.keymap.set('t', '<C-w>', [[<C-\><C-n><C-w>]], opts)
+				end
+
+				-- if you only want these mappings for toggle term use term://*toggleterm#* instead
+				vim.cmd('autocmd! TermOpen term://* lua set_terminal_keymaps()')
+			end,
 		},
 
 		-- Neovim plugin for GitHub Copilot
@@ -162,7 +223,7 @@ return {
 		-- A pretty diagnostics and code actions UI
 		{
 			"folke/trouble.nvim",
-			dependencies = { 
+			dependencies = {
 				"kyazdani42/nvim-web-devicons", },
 			config = function()
 				require("trouble").setup {
@@ -178,11 +239,11 @@ return {
 			"folke/todo-comments.nvim",
 			dependencies = { "nvim-lua/plenary.nvim" },
 			opts = {
-			  -- your configuration comes here
-			  -- or leave it empty to use the default settings
-			  -- refer to the configuration section below
+				-- your configuration comes here
+				-- or leave it empty to use the default settings
+				-- refer to the configuration section below
 			}
-		  },
+		},
 	},
 	mappings = {
 		custom = {
@@ -282,6 +343,37 @@ return {
 			["<leader>tl"] = {
 				"<cmd>TodoTelescope<cr>",
 				"[TODO] Show list"
+			},
+			-- * ToggleTerm
+			["<leader>ot"] = {
+				"<cmd>ToggleTerm<cr>",
+				"[ToggleTerm] Open"
+			},
+			-- * Work: Swap Flutter Flavors
+			["<leader>flwsd"] = {
+				"<cmd>FlutterRun  --flavor dev -t lib/main_dev.dart<cr>",
+				"[Work] [SWAP] [Flutter] Debug Dev"
+			},
+			["<leader>flwsq"] = {
+				"<cmd>FlutterRun  --flavor qa -t lib/main_qa.dart<cr>",
+				"[Work] [SWAP] [Flutter] Debug QA"
+			},
+			["<leader>flwss"] = {
+				"<cmd>FlutterRun  --flavor stg -t lib/main_stg.dart<cr>",
+				"[Work] [SWAP] [Flutter] Debug STG"
+			},
+			["<leader>flwsp"] = {
+				"<cmd>FlutterRun  --flavor prod<cr>",
+				"[Work] [SWAP] [Flutter] Debug PROD"
+			},
+			-- * General commands
+			["<leader>qK"] = {
+				"<cmd>wqa<cr>",
+				"Quit, Save buffers and Exit Neovim "
+			},
+			["<leader>qQ"] = {
+				"<cmd>qa!<cr>",
+				"Quit without Save buffers and Exit Neovim"
 			},
 		}
 	}
